@@ -1,0 +1,89 @@
+<!DOCTPYE html>
+<html>
+  <head>
+    <title>Rock Paper Scissors - Practice Project</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <script>
+// 1. UNDERSTAND
+// Create the computer player with a function computerPlay().
+// computerPlay() randomly turns out "rock", "paper" or "scissors".
+
+// Create random number
+// Create function that returns random number
+let randomNumber = Math.floor((Math.random() * 3));
+function returnRandonNumer () {
+  return(randomNumber);
+}
+
+// Create function that assigns rock, paper and scissors to a random number between 1 and 3.
+function computerPlay() {
+  if (randomNumber == 1) {
+    return("rock");
+  } else if (randomNumber == 2) {
+    return("paper");
+  } else if (randomNumber == 3) {
+    return("scissors");
+  }
+}
+
+// Establish computer as player
+let computerSelection = computerPlay();
+  
+// Get input from human player via prompt
+let playerSelection = prompt("Rock, paper or scissors?");
+
+// turn user input to lower case
+playerSelection = playerSelection.toLowerCase();
+
+// Write function (with 2 parameters: playerSelection, computerSelection) that plays a single round.
+// Body of function: 
+// - defines rules of the game
+// - returns (with return, not console.log()) winner of round: Did player win/lose, why (which object beats which).
+
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    let result = "It's a draw.";
+  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    result = "You win! Rock beats scissors.";
+  } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    result = "You lose! Rock beats scissors.";
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    result = "You win! Paper beats rock.";
+  } else if (playerSelection == "rock" && computerSelection == "paper") {
+    result = "You lose! Paper beats rock.";
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    result = "You win! Scissors beat paper.";
+  } else if (playerSelection == "paper" && computerSelection == "scissors") {
+    result = "You lose! Scissors beat paper.";
+  } else {
+    result = "Something went wrong.";
+  }
+}
+
+
+// Create function game().
+// - inside, put previous function playRound().
+// - play 5 rounds and count the rounds
+// - return winner/loser after each round with console.log
+
+function game() {
+  for (let i = 0; i < 6; i++) {
+    playRound(playerSelection, computerSelection);
+    console.log(result);
+  }
+}
+
+playRound(playerSelection, "scissors");
+
+// - return winner/loser at the end with console.log ?? HOW??
+// - alternatively, call playRound() 5 times.
+
+
+  </script>
+</body>
+</html>
+
+
+
