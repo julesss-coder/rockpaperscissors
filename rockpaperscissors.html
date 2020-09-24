@@ -1,89 +1,104 @@
-<!DOCTPYE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Rock Paper Scissors - Practice Project</title>
     <meta charset="UTF-8">
   </head>
   <body>
-    <script>
-// 1. UNDERSTAND
-// Create the computer player with a function computerPlay().
-// computerPlay() randomly turns out "rock", "paper" or "scissors".
+<script>
+// Computerplayer erstellen mit FUnktion, die entweder Schere, Stein oder Papier ausgibt
+// Schere, Stein und Papier werden denZahlen 1, 2 oder 3 zugewiesen;
+let computerSelection;
+let playerSelection;
+// globale Variablen deklarieren, die mitzählen, wer jeweils gewinnt
+let computerScore = 0;
+let playerScore = 0;
+let result;
+// Get user's choice
+playerSelection = prompt("Rock, paper or scissors?");
+playerSelection = playerSelection.toLowerCase();
+// WORKS!
 
 // Create random number
-// Create function that returns random number
-let randomNumber = Math.floor((Math.random() * 3));
-function returnRandonNumer () {
-  return(randomNumber);
-}
+let randomNumber = Math.ceil(Math.random() * (3));
+console.log(randomNumber);
+// WORKS!
 
-// Create function that assigns rock, paper and scissors to a random number between 1 and 3.
+// Get random computer's choice
 function computerPlay() {
-  if (randomNumber == 1) {
-    return("rock");
-  } else if (randomNumber == 2) {
-    return("paper");
-  } else if (randomNumber == 3) {
-    return("scissors");
+   if (randomNumber === 1) {
+   return computerSelection = "rock";
+ } else if (randomNumber === 2) {
+   return computerSelection = "paper";
+ } else if (randomNumber === 3) {
+   return computerSelection = "scissors";
+ }
+}
+
+// CALL THE FUNCTION!!
+computerPlay();
+console.log(computerSelection);
+// WORKS!
+
+/*
+// Ausgabe von Funktion computerPlay() wird Variable computerSelection zugewiesen
+// Muss ich dabei auch den Parameter dieser Funktion reinschreiben?
+// let computerSelection = computerPlay();
+*/
+
+// HIER STECKE ICH FEST: DIE RUNDE WIRD  GESPIELT, ABER DAS ERGEBNIS IST FALSCH.
+// Play one round of rock, paper, scissors
+function playRound(computerSelection, playerSelection) {
+  if (computerSelection == playerSelection) {
+    console.log("Draw.");
+  } else if (computerSelection == "rock" && playerSelection == "scissors") {
+    computerScore++;
+    console.log("You lose. Rock beats scissors.");
+  } else if (computerSelection == "scissors" && playerSelection == "rock") {
+    playerScore++;
+    console.log("You win. Rock beats scissors.");
+  } else if (computerSelection == "paper" && playerSelection == "rock") {
+    computerScore++;
+    console.log("You lose. Paper beats rock.");
+  } else if (computerSelection == "rock" && playerSelection == "paper") {
+    playerScore++;
+    console.log("You win. Paper beats rock.");
+  } else if (computerSelection == "scissors" && playerSelection == "paper") {
+    computerScore++;
+    console.log("You lose. Scissors beat paper.");
+  } else if (computerSelection == "paper" && playerSelection == "scissors"); {
+    playerScore++;
+    console.log("You win. Scissors beat paper.");
   }
 }
 
-// Establish computer as player
-let computerSelection = computerPlay();
-  
-// Get input from human player via prompt
-let playerSelection = prompt("Rock, paper or scissors?");
+playRound();
 
-// turn user input to lower case
-playerSelection = playerSelection.toLowerCase();
-
-// Write function (with 2 parameters: playerSelection, computerSelection) that plays a single round.
-// Body of function: 
-// - defines rules of the game
-// - returns (with return, not console.log()) winner of round: Did player win/lose, why (which object beats which).
-
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    let result = "It's a draw.";
-  } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    result = "You win! Rock beats scissors.";
-  } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    result = "You lose! Rock beats scissors.";
-  } else if (playerSelection == "paper" && computerSelection == "rock") {
-    result = "You win! Paper beats rock.";
-  } else if (playerSelection == "rock" && computerSelection == "paper") {
-    result = "You lose! Paper beats rock.";
-  } else if (playerSelection == "scissors" && computerSelection == "paper") {
-    result = "You win! Scissors beat paper.";
-  } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    result = "You lose! Scissors beat paper.";
+/*  
+// eigene Funktion, die den Rundengewinner ausgibt
+function roundWinner(computerScore, playerScore) {
+  if (computerScore > playerScore) {
+    console.log("You lost this round.");
   } else {
-    result = "Something went wrong.";
+    console.log("You won this round!");
   }
 }
 
-
-// Create function game().
-// - inside, put previous function playRound().
-// - play 5 rounds and count the rounds
-// - return winner/loser after each round with console.log
-
+// 5 Runden spielen
+// Endergebnis ausgeben 
 function game() {
-  for (let i = 0; i < 6; i++) {
-    playRound(playerSelection, computerSelection);
-    console.log(result);
+  let counter;
+  for (counter = 0; counter < 6; counter++) {
+    playRound();
+    roundWinner();
+  }
+  if (computerScore > playerScore) {
+    console.log("You lost against the computer.");
+  } else {
+    console.log("You won against the computer! Congratulations!");
   }
 }
-
-playRound(playerSelection, "scissors");
-
-// - return winner/loser at the end with console.log ?? HOW??
-// - alternatively, call playRound() 5 times.
-
-
-  </script>
+*/
+</script>
 </body>
 </html>
-
-
-
