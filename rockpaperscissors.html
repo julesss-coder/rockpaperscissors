@@ -1,139 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
   <head>
-    <title>Rock Paper Scissors - Practice Project</title>
     <meta charset="UTF-8">
+    <title>Rock Paper Scissors - You against the computer</title>    
   </head>
   <body>
-    <!--HTML belongs here-->
-    <div>
-      <button>Play one round against the computer</button>
+    <p id="computerChoice">Computer's choice:</p>
+    <p id="yourChoice">Your choice:</p>
+    <h2>Results:</h2>
+    <h2 id="result"></h2> 
+    <div id="score" class="score">
+      <p>Player: 0</p>
+      <p>Computer: 0</p>
     </div>
-    <div>
-      <button>Play five rounds against the computer</button>
-    </div>
-    <script>
-      // CHECK: Habe ich alle Funktionen aufgerufen?
-      // Habe ich return-Statements in alle if-Bedingungen eingefügt?
-      // 1. Declare variables computerSelection and playerSelection
+    <button class="choices" id="rock">Rock</button>
+    <button class="choices" id="paper">Paper</button>
+    <button class="choices"id="scissors">Scissors</button>
 
-      // GET INPUT FROM USER
-      function userPlay() {
-        var playerSelection = prompt("Let's play! Rock, paper or scissors?");
-        playerSelection = playerSelection.toLowerCase(); // Muss ich hier return einfügen? JA, sonst kommt undefined zurück
-        return playerSelection;
-      };
-      
-
-      // 2. Create function computerPlay that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. 
-         // Create random number
-         // Assign 0, 1 or 2 to rock, paper and scissors
-
-      // MAKE COMPUTER PLAY
-      function computerPlay() {
-        const randomNumber = Math.floor(Math.random() * (3)); // Was ist der Unterschied zw. ceil, floor und round?
-        var options = ["rock", "paper", "scissors"];
-        var computerSelection = options[randomNumber];
-        return computerSelection;
-      };
-
-
-   
-      // 3. Write a function playRound() that plays a single round of Rock Paper Scissors. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
-
-        // Declare variables computerWins and playerWins and set them to 0.
-        // For every time the computer wins, increment computerWins by 1.
-        // For every time the player wins, increment playerWins by 1.
-      // KEEP TRACK OF SCORES
-     
-
-        // Make your function case insensitive (so users can input rock, ROCK, RocK or any other variation)
-        // Ask user to enter rock, paper or scissors by using a prompt.
-        // Play a round
-        // List cases for tie and all possible scenarios (if-condition).
-        // return" the results of the function call, not console.log() them.
-
-      // PLAY ONE ROUND
-      var computerWins = 0;
-      var playerWins = 0;
-
-      function playRound(playerSelection, computerSelection) { 
-        playerSelection = userPlay();
-        computerSelection = computerPlay(); // Muss ich random number als argument übergeben?
-        // Tie:
-        if (computerSelection === playerSelection) {
-          alert("It's a tie! Wanna play another round?");
-          return;
-        // The 3 cases in which the computer wins:
-        } else if (computerSelection === "rock" && playerSelection === "scissors") {
-          alert("You lose! Rock beats scissors.");
-          computerWins++;
-          return;
-          //updateScore();
-        } else if (computerSelection === "scissors" && playerSelection === "paper") {
-          alert("You lose! Scissors beat paper.");
-          computerWins++;
-          return;
-          //updateScore();
-        } else if (computerSelection === "paper" && playerSelection === "rock") {
-          alert("You lose! Paper beats rock.");
-          computerWins++;
-          return;
-          //updateScore();
-        // The 3 cases in which the player wins:
-        } else if (computerSelection === "scissors" && playerSelection === "rock") {
-          alert("You win! Rock beats scissors.");
-          playerWins++;
-          return;
-          //updateScore();
-        } else if (computerSelection === "paper" && playerSelection === "scissors") {
-          alert("You win! Scissors beat paper.");
-          playerWins++;
-          return;
-          //updateScore();
-        } else if (computerSelection === "rock" && playerSelection === "paper") {
-          alert("You win! Paper beats rock.");
-          playerWins++;
-          return;
-          //updateScore();
-        // Error
-        } else {
-          alert("Something went wrong. Please try again!");
-          return;
-        }
-      };
-
-// UPDATE SCORE 
-// Wenn das Programm in diese Funktion einsteigt, sind computerWins und playerWins undefined!! Warum!
-      function updateScore(computerWins, playerWins) {
-        if (computerWins > playerWins) {
-            alert("You lose!");
-            return;
-          } else if (playerWins > computerWins) {
-            alert("You win! Congratulations!");
-            return;
-          } else {
-            alert("It's a tie! Wanna play another round?");
-            return;
-          }
-      };
-
-      // 4. Write a NEW function called game(). 
-        // Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
-
-      function game() {
-        for (var i = 0; i < 5; i++) {
-          playRound(); // Muss ich, wenn ich eine Funktion aufrufe und ihr selbst keine Argumente übergeben will, die Parameter in den Funktionsaufruf schreiben?
-        }
-        alert("Final score: computer: " + computerWins + " vs. " + "you: " + playerWins);
-        updateScore(computerWins, playerWins);
-      };
-
-      // CHECK: Welche FUnktionen muss ich aufrufen, um zu spielen?
-      // Für eine Runde: 
-      //playRound();
-      // Für fünf RUnden:
-      //game();
-    </script>
+    
+    <script src="script.js"></script>
   </body>
 </html>
