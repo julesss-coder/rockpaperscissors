@@ -53,34 +53,26 @@ function play(e) {
   function getWinner(playerSelection, computerSelection) { 
     if (computerSelection === playerSelection) {
       result.innerHTML = "It's a tie! Wanna play another round?"; 
-      return;
     } else if (computerSelection === "rock" && playerSelection === "scissors") {
       result.innerHTML = "You lose! Rock beats scissors.";
-      scoreboard.computer++
-      return;
+      scoreboard.computer++;
     } else if (computerSelection === "scissors" && playerSelection === "paper") {
       result.innerHTML = "You lose! Scissors beat paper.";
       scoreboard.computer++;
-      return;
     } else if (computerSelection === "paper" && playerSelection === "rock") {
       result.innerHTML = "You lose! Paper beats rock.";
       scoreboard.computer++;
-      return;
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
       result.innerHTML = "You win! Rock beats scissors.";
       scoreboard.player++;
-      return;
     } else if (computerSelection === "paper" && playerSelection === "scissors") {
       result.innerHTML = "You win! Scissors beat paper.";
       scoreboard.player++;
-      return;
     } else if (computerSelection === "rock" && playerSelection === "paper") {
       result.innerHTML = "You win! Paper beats rock.";
       scoreboard.player++;
-      return;
     } else {
       result.innerHTML = "Something went wrong. Please try again!";
-      return;
     }
   }
   
@@ -93,15 +85,12 @@ function updateScore(computerScore, playerScore) {
     if (computerScore > playerScore) {
       // alert(computerScore + " : " + playerScore);
       result.innerHTML = "5 rounds done & you lose!";
-      return;
     } else if (playerScore > computerScore) {
       // alert(computerScore + " : " + playerScore);
       result.innerHTML = "5 rounds done & you win! Congratulations!";
-      return;
     } else if (computerScore === playerScore) {
       // alert(computerScore + " : " + playerScore);
       result.innerHTML = "5 rounds done & it's a tie!";
-      return;
     }
   }
 };
